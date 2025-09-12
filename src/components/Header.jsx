@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { endpoints } from "../utils/api";
-import Carrito from "./Carrito";
 import { Link } from "react-router-dom";
 
 
