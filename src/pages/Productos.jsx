@@ -14,6 +14,7 @@ export default function Productos() {
     precioMax: ""
   });
 
+
   useEffect(() => {
     async function cargarProductos() {
       const data = await fetchProductos();
@@ -32,6 +33,7 @@ export default function Productos() {
       return { ...prev, categoria: nueva };
     });
   };
+
 
   const productosFiltrados = productos.filter((p) => {
     const porCategoria =

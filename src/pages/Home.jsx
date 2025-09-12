@@ -4,7 +4,6 @@ import Footer from "../components/Footer"
 import Contenido from "../components/Contenido";
 
 function Home() {
-  
   return (
     <div>
       <Header />

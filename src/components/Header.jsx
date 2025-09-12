@@ -35,7 +35,7 @@ function Header() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              class="w-8 h-8 text-white"
+              className="w-8 h-8 text-white"
             >
               <path
                 stroke-linecap="round"
@@ -64,38 +64,40 @@ function Header() {
         {/* Navigation Links - Center */}
         <div className="flex items-center justify-center flex-1 mx-8">
           <ul className="flex gap-8 items-center text-lg p-0 list-none">
-            <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" class="text-white no-underline">
+
+            <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
+              <Link to="productos" className="text-white no-underline">
                 Hombres
               </Link>
             </li>
-            <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" class="text-white no-underline">
+            <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
+              <Link to="productos" className="text-white no-underline">
                 Mujeres
               </Link>
             </li>
-            <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" class="text-white no-underline">
+            <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
+              <Link to="productos" className="text-white no-underline">
+
                 Niños
               </Link>
             </li>
           </ul>
         </div>
 
-        <div class="flex items-center justify-between w-full mt-4 mb-4 gap-3 lg:w-1/2 lg:justify-end lg:gap-8">
-          <div class="relative w-1/2 lg:w-[40%]">
+        <div className="flex items-center justify-between w-full mt-4 mb-4 gap-3 lg:w-1/2 lg:justify-end lg:gap-8">
+          <div className="relative w-1/2 lg:w-[40%]">
             <input
               type="search"
               placeholder="Buscar..."
-              class="text-base text-[#333333] border border-[#adadad] bg-[#f5f5f5] rounded pl-5 pr-3 ml-3 w-full h-8"
+              className="text-base text-[#333333] border border-[#adadad] bg-[#f5f5f5] rounded pl-5 pr-3 ml-3 w-full h-8"
             />
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
                 viewBox="0 0 24 24"
-                class="w-[1.1rem] h-[1.1rem] text-[#2f2f2f]"
+                className="w-[1.1rem] h-[1.1rem] text-[#2f2f2f]"
               >
                 <path
                   stroke-linecap="round"
@@ -105,8 +107,8 @@ function Header() {
               </svg>
             </div>
           </div>
-          <div class="flex gap-6 justify-end mr-3">
-            <button class="bg-transparent border-none hover:scale-105 transition">
+          <div className="flex gap-6 justify-end mr-3">
+            <button className="bg-transparent border-none hover:scale-105 transition">
               <img
                 width="32"
                 height="32"
@@ -116,14 +118,16 @@ function Header() {
             </button>
 
             <button class="bg-transparent border-none hover:scale-105 transition">
-              <Link to="/login-registro.html">
+
+              <Link to="login">
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-6 h-6 text-[#f5f5f5]"
+                  className="w-6 h-6 text-[#f5f5f5]"
                 >
                   <path
                     stroke-linecap="round"
@@ -137,7 +141,7 @@ function Header() {
             <button
               onClick={() => setAbierto(!abierto)}
               id="botonCarrito"
-              class="bg-transparent border-none hover:scale-105 transition"
+              className="bg-transparent border-none hover:scale-105 transition"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +149,7 @@ function Header() {
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6 text-[#f5f5f5]"
+                className="w-6 h-6 text-[#f5f5f5]"
               >
                 <path
                   stroke-linecap="round"
@@ -156,7 +160,7 @@ function Header() {
             </button>
           </div>
 
-          <div id="carritoPanel" class="carrito-panel"></div>
+
         </div>
       </div>
     </nav>

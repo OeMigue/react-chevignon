@@ -3,13 +3,27 @@ import { Link } from "react-router-dom";
 
 function CardProducto({ productos }) {
   const URL = "https://back-server-chevignon.onrender.com";
+  const [getProductoSleccionado, setProductoSeleccionado] = useState()
+  const [getProductoCarrito, setProductoCarrito] = useState()
 
-  function handleVerMas(producto) {
-    console.log("Producto seleccionado: ", producto);
+  function consultarProductos() {
+    fetch(endpoints.productos)
+      .then((response) => response.json())
+      .then((data) => {
+        setProductos(data);
+        console.log(data);
+      });
   }
 
-  function handleProductoCarrito(producto) {
-    console.log("Producto agregado al carrito: ", producto);
+ useEffect(() => {
+    consultarProductos();
+  }, []); // Añadido array de dependencias vacío
+
+  
+
+  function handleVerMas(producto){
+    setProductoSeleccionado(producto)
+    console.log("Producto agregando al carrito: ", producto)
   }
 
   return (
@@ -26,7 +40,9 @@ function CardProducto({ productos }) {
             <span className="text-xl font-bold block mb-4">${producto.precio}</span>
 
             <div className="flex justify-center gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-              <Link to="/paginaproductos">
+
+              <Link to={`/productos/paginaproductos/${producto.id}`} state={{producto}}>
+
                 <button
                   className="btn-ver-mas bg-white text-black px-5 py-2 rounded hover:bg-gray-200"
                   onClick={() => handleVerMas(producto)}
@@ -47,7 +63,6 @@ function CardProducto({ productos }) {
     </div>
   );
 }
-
 export default CardProducto;
 
 

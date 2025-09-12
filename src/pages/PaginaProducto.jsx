@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { endpoints } from "../utils/api";
+import { useLocation, useParams } from "react-router-dom";
+import ProductosRecomendados from "../components/ProductosRecomendados";
 
 function PaginaProducto() {
-
-  const [getProductos, setProductos] = useState({})
-
-  function buscarProductos(){
-    fetch(endpoints.productos)
-    .then((response) => response.json())
-    .then((data) => setProductos(data))
-    .catch((error) => alert(`Error al cargar: ${error}`))
-  }
+  const URL = "https://back-server-chevignon.onrender.com";
+  const { id } = useParams(); // ← ID desde la URL
+  const location = useLocation();
+  const [producto, setProducto] = useState(location.state?.producto || null);
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    buscarProductos();
-  },[])
+    fetch("https://back-server-chevignon.onrender.com/productos")
+      .then((res) => res.json())
+      .then((data) => setProductos(data));
+  }, []);
+
+  useEffect(() => {
+    if (!producto) {
+      // Si no vino por state, lo traemos del backend
+      fetch(`https://back-server-chevignon.onrender.com/productos/${id}`)
+        .then((response) => response.json())
+        .then((data) => setProducto(data))
+        .catch((err) => console.error("Error cargando producto", err));
+    }
+  }, [id, producto]);
 
   return (
     <main className="mt-20 mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -35,7 +45,7 @@ function PaginaProducto() {
                 href="#"
                 className="w-full text-[var(--gris-niebla)] hover:text-[var(--beige-corteza-suave)]"
               >
-                Ropa de hombre
+                {`Ropa de ${producto.genero}`}
               </a>
             </li>
             <li className="opacity-100 text-[var(--gris-niebla)]">/</li>
@@ -44,7 +54,7 @@ function PaginaProducto() {
                 href="#"
                 className="text-[var(--gris-niebla)] hover:text-[var(--beige-corteza-suave)]"
               >
-                Chaquetas
+                {producto.categoria}
               </a>
             </li>
             <li className="opacity-100 text-[var(--gris-niebla)]">/</li>
@@ -53,7 +63,7 @@ function PaginaProducto() {
                 href="#"
                 className="text-[var(--madera-tostada-elegante)] font-medium"
               >
-                Chaqueta Denim Trucker
+                {producto.nombre}
               </a>
             </li>
           </ol>
@@ -63,31 +73,31 @@ function PaginaProducto() {
         {/* Imagenes Producto */}
         <section className="flex flex-col lg:flex-row lg:h-[700px] gap-2 items-start rounded-xl">
           <div className="flex justify-center overflow-hidden rounded-xl size-full lg:size-full shadow-lg">
-            <img id="imagen" width="" src="" alt="" className="size-full" />
+            <img width="" src={`${URL}/${producto?.imagen}`} alt="" className="size-full" />
           </div>
 
           <div className="grid grid-cols-4 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-1 lg:grid-rows-4 gap-2 md:size-11/12 lg:h-full lg:w-1/3 justify-items-center items-start">
             <img
               id="imagen"
-              src=""
+              src={`${URL}/${producto?.imagen}`}
               alt="Vista 1"
               className="size-full object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-[var(--color-texto)] transition"
             />
             <img
               id="imagen"
-              src=""
+              src={`${URL}/${producto?.imagen}`}
               alt="Vista 2"
               className="size-full object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-[var(--color-texto)] transition"
             />
             <img
               id="imagen"
-              src=""
+              src={`${URL}/${producto?.imagen}`}
               alt="Vista 3"
               className="size-full object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-[var(--color-texto)] transition"
             />
             <img
               id="imagen"
-              src=""
+              src={`${URL}/${producto?.imagen}`}
               alt="Vista 4"
               className="size-full object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-[var(--color-texto)] transition"
             />
@@ -99,7 +109,9 @@ function PaginaProducto() {
             <h1
               id="nombre"
               className="text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-[var(--beige-corteza-suave)] mb-2"
-            />
+            >
+              {producto.nombre}
+            </h1>
             <p className="text-sm text-[var(--gris-niebla)] mb-4">
               REF: 201819H1
             </p>
@@ -128,7 +140,7 @@ function PaginaProducto() {
             </div>
 
             <div class="text-3xl md:text-4xl font-bold text-[var(--gris-niebla)]">
-              <strong id="precio" class=""></strong>
+              <strong id="precio" class="">{producto.precio}</strong>
             </div>
           </div>
 
@@ -233,20 +245,21 @@ function PaginaProducto() {
       </section>
 
       <section className="w-full">
-        <h2 className="bebas-neue-regular text-5xl font-bold text-[var(--beige-corteza-suave)] mt-14 mb-8">
-          Productos recomendados
-        </h2>
-        <div id="productosRecomendados" className="contenedor-productos" />
+        
+        <ProductosRecomendados
+        productos={productos}
+        cantidad={3}
+        titulo="Productos recomendados"
+      />
       </section>
 
       <section className="w-full">
-        <h2 className="bebas-neue-regular text-5xl font-bold text-[var(--beige-corteza-suave)] mt-14 mb-8">
-          Productos que te podrian gustar
-        </h2>
-        <div
-          id="productosGustar"
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-center gap-4 contenedor-productos"
-        />
+        
+        <ProductosRecomendados
+        productos={productos}
+        cantidad={3}
+        titulo="Productos que te podrían gustar"
+      />
       </section>
     </main>
   );
