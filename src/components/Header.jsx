@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { endpoints } from "../utils/api";
 import Carrito from "./Carrito";
+import { Link } from "react-router-dom";
 
 
 function Header() {
@@ -15,13 +16,13 @@ function Header() {
 
       <div className={`flex justify-between items-center lg:hidden`}>
         <div className="max-w-[140px] hover:scale-105 transition">
-          <a href="/index.html">
+          <Link to="/index.html">
             <img
               src={`${endpoints}public/img/logos/logoBlancoChevignonClasicoSinFondo.png`}
               alt="Logo"
               className="h-12 w-auto"
             />
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-center rounded-lg bg-transparent">
           <button
@@ -51,32 +52,32 @@ function Header() {
       <div className="hidden lg:flex lg:justify-between lg:items-center lg:w-full">
         {/* Logo Section - Left */}
         <div className="max-w-[140px] hover:scale-105 transition">
-          <a href="/index.html">
+          <Link to="/index.html">
             <img
               src="/assets/images/logos/logoBlancoChevignonClasicoSinFondo.png"
               alt="Logo"
               className="h-12 w-auto"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Navigation Links - Center */}
         <div className="flex items-center justify-center flex-1 mx-8">
           <ul className="flex gap-8 items-center text-lg p-0 list-none">
             <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <a href="/productos.html" class="text-white no-underline">
+              <Link to="/productos.html" class="text-white no-underline">
                 Hombres
-              </a>
+              </Link>
             </li>
             <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <a href="/productos.html" class="text-white no-underline">
+              <Link to="/productos.html" class="text-white no-underline">
                 Mujeres
-              </a>
+              </Link>
             </li>
             <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <a href="/productos.html" class="text-white no-underline">
+              <Link to="/productos.html" class="text-white no-underline">
                 Niños
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -115,7 +116,7 @@ function Header() {
             </button>
 
             <button class="bg-transparent border-none hover:scale-105 transition">
-              <a href="/login-registro.html">
+              <Link to="/login-registro.html">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -130,7 +131,7 @@ function Header() {
                     d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                   />
                 </svg>
-              </a>
+              </Link>
             </button>
 
             <button
