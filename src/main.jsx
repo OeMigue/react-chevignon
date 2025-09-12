@@ -11,6 +11,8 @@ import Home from './pages/Home';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={createBrowserRouter(routerApp)} />
+    <BrowserRouter>
+      <Productos/>
+    </BrowserRouter>
   </StrictMode>,
 )

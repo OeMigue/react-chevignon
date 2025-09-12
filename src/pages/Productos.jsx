@@ -14,6 +14,7 @@ export default function Productos() {
     precioMax: ""
   });
 
+
   useEffect(() => {
     async function cargarProductos() {
       const data = await fetchProductos();
@@ -33,6 +34,7 @@ export default function Productos() {
     });
   };
 
+
   const productosFiltrados = productos.filter((p) => {
     const porCategoria =
       filtro.categoria.length > 0 ? filtro.categoria.includes(p.categoria) : true;
@@ -40,8 +42,6 @@ export default function Productos() {
     const porPrecio = filtro.precioMax ? p.precio <= parseInt(filtro.precioMax) : true;
     return porCategoria && porGenero && porPrecio;
   });
-  console.log(productosFiltrados);
-  
 
   return (
 

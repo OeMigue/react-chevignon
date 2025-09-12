@@ -64,6 +64,7 @@ function Header() {
         {/* Navigation Links - Center */}
         <div className="flex items-center justify-center flex-1 mx-8">
           <ul className="flex gap-8 items-center text-lg p-0 list-none">
+
             <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
               <Link to="productos" className="text-white no-underline">
                 Hombres
@@ -76,6 +77,7 @@ function Header() {
             </li>
             <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
               <Link to="productos" className="text-white no-underline">
+
                 Niños
               </Link>
             </li>
@@ -116,7 +118,9 @@ function Header() {
             </button>
 
             <button class="bg-transparent border-none hover:scale-105 transition">
+
               <Link to="login">
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -156,7 +160,7 @@ function Header() {
             </button>
           </div>
 
-          <div id="carritoPanel" className="carrito-panel"></div>
+
         </div>
       </div>
     </nav>

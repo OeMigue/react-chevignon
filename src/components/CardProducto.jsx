@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { endpoints } from "../utils/api";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function CardProducto({ productos }) {
@@ -24,14 +23,7 @@ function CardProducto({ productos }) {
 
   function handleVerMas(producto){
     setProductoSeleccionado(producto)
-    console.log("Producto seleccionado: ", producto);
-    
-  }
-
-  function handleProductoCarrito(producto) {
-    setProductoCarrito(producto)
-    console.log("Producto agregado al carrito: ", producto);
-    
+    console.log("Producto agregando al carrito: ", producto)
   }
 
   return (
@@ -48,7 +40,9 @@ function CardProducto({ productos }) {
             <span className="text-xl font-bold block mb-4">${producto.precio}</span>
 
             <div className="flex justify-center gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+
               <Link to={`/productos/paginaproductos/${producto.id}`} state={{producto}}>
+
                 <button
                   className="btn-ver-mas bg-white text-black px-5 py-2 rounded hover:bg-gray-200"
                   onClick={() => handleVerMas(producto)}
@@ -70,3 +64,6 @@ function CardProducto({ productos }) {
   );
 }
 export default CardProducto;
+
+
+
