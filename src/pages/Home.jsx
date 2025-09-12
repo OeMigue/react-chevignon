@@ -3,9 +3,10 @@ import Header from "../components/Header";
 import { seccionCategorias, seccionNovedades } from "../components/Secciones";
 import Promociones from "../components/Promociones"
 import Envios from "../components/Envios"
-import Footer from "../components/Footer"
+import Footer from "../components/Footer" 
 
 function Home() {
+  
   return (
     <div>
       <Header />
