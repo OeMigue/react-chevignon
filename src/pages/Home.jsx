@@ -1,10 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
-import { seccionCategorias, seccionNovedades } from "../components/Secciones";
-import Promociones from "../components/Promociones";
-import Envios from "../components/Envios";
-import Footer from "../components/Footer";
-import Contenido from "../components/Contenido"
+import Footer from "../components/Footer" 
+import Contenido from "../components/Contenido";
 
 function Home() {
   return (
@@ -13,7 +10,7 @@ function Home() {
       <main className="w-full flex flex-col items-center  bg-gray-200">
         <Contenido />
       </main>
-      <Footer />
+        <Footer />
     </div>
   );
 }

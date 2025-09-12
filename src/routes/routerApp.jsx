@@ -1,7 +1,7 @@
 import { Children } from "react";
 import Productos from "../pages/Productos";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
+import Login from "../pages/LoginRegistro";
 import PaginaProducto from "../pages/PaginaProducto";
 
 export let routerApp = [

@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { endpoints } from "../utils/api";
+import Carrito from "./Carrito";
 import { Link } from "react-router-dom";
 
+
 function Header() {
+  const [abierto, setAbierto] = useState(false);
   return (
-    <nav className="p-4 bg-gray-950 text-white hover:text-gray-950 fixed top-0 z-10 w-full">
+    <nav className="p-4 bg-gray-950 text-gray-950 fixed top-0 z-10 w-full">
       {/* Mobile View */}
-      <div className="flex justify-between items-center lg:hidden">
+
+      <div className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-lg flex flex-col ${abierto ? "" : "hidden"}`}>
+        <Carrito prop={setAbierto} />
+      </div>
+
+      <div className={`flex justify-between items-center lg:hidden`}>
         <div className="max-w-[140px] hover:scale-105 transition">
-          <a href="/index.html">
+          <Link to="/index.html">
             <img
               src={`${endpoints}public/img/logos/logoBlancoChevignonClasicoSinFondo.png`}
               alt="Logo"
               className="h-12 w-auto"
             />
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-center rounded-lg bg-transparent">
           <button
@@ -44,13 +52,13 @@ function Header() {
       <div className="hidden lg:flex lg:justify-between lg:items-center lg:w-full">
         {/* Logo Section - Left */}
         <div className="max-w-[140px] hover:scale-105 transition">
-          <a href="/index.html">
+          <Link to="/index.html">
             <img
               src="/assets/images/logos/logoBlancoChevignonClasicoSinFondo.png"
               alt="Logo"
               className="h-12 w-auto"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Navigation Links - Center */}
@@ -107,8 +115,8 @@ function Header() {
               />
             </button>
 
-            <button className="bg-transparent border-none hover:scale-105 transition">
-              <a href="/login-registro.html">
+            <button class="bg-transparent border-none hover:scale-105 transition">
+              <Link to="login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -123,10 +131,11 @@ function Header() {
                     d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                   />
                 </svg>
-              </a>
+              </Link>
             </button>
 
             <button
+              onClick={() => setAbierto(!abierto)}
               id="botonCarrito"
               className="bg-transparent border-none hover:scale-105 transition"
             >
@@ -149,9 +158,9 @@ function Header() {
 
           <div id="carritoPanel" className="carrito-panel"></div>
         </div>
-        </div>
-      </nav>
-    
+      </div>
+    </nav>
+
   );
 }
 
