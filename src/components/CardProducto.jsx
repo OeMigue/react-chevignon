@@ -3,7 +3,7 @@ import { endpoints } from "../utils/api";
 import { Link } from "react-router-dom";
 
 function CardProducto() {
-  const URL = "https://back-server-chevignon.onrender.com";
+  
   const [getProductos, setProductos] = useState([]);
   const [getProductoSleccionado, setProductoSeleccionado] = useState()
   const [getProductoCarrito, setProductoCarrito] = useState()
@@ -53,7 +53,7 @@ function CardProducto() {
             <span className="text-gray-600">${producto.precio}</span>
           </div>
           <div>
-            <Link to="/paginaproductos">
+            <Link to={`/productos/paginaproductos/${producto.id}`} state={{producto}}>
             <button class="btn-ver-mas" onClick={()=>handleVerMas(producto)}>Ver más</button></Link>
             <Link><button class="btn-add-to-cart" onClick={()=>handleProductoCarrito(producto)}>Agregar</button></Link>
           </div>
