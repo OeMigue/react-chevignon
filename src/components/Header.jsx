@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { endpoints } from "../utils/api";
-import Carrito from "./Carrito";
 import { Link } from "react-router-dom";
 
 
@@ -10,8 +9,40 @@ function Header() {
     <nav className="p-4 bg-gray-950 text-gray-950 fixed top-0 z-10 w-full">
       {/* Mobile View */}
 
-      <div className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-lg flex flex-col ${abierto ? "" : "hidden"}`}>
-        <Carrito prop={setAbierto} />
+      <div  className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-lg flex flex-col 
+        ${abierto ? "" : "hidden"}`}>
+        <div className="flex justify-between items-center p-4 border-b">
+          <div className="flex items-center gap-2 font-medium text-base">
+            <span className="text-xl"
+            ><img
+                src="https://chevignon.vtexassets.com/assets/vtex.file-manager-graphql/images/4ed64a5a-7b89-40af-b31c-d85a1fa51334___7d5edaf384c76655da436c7883e31b32.svg"
+                className="w-12 h-12"/>
+            </span>Mi bolsa
+          </div>
+          <button
+            onClick={() => setAbierto(!abierto)}
+            className="text-xl cursor-pointer" id="cerrarCarrito">✖️</button>
+        </div>
+
+        <div id="cart-items" className="p-4 flex flex-col gap-4 flex-grow overflow-y-auto"></div>
+
+        <div className="border-t p-4 text-sm">
+          <div className="flex justify-between mb-2">
+            <span>Subtotal</span>
+            <span id="subtotalCarrito">$0</span>
+          </div>
+          <div className="flex justify-between font-bold text-base mb-1">
+            <span>Total</span>
+            <span id="totalCarrito">$0</span>
+          </div>
+          <p className="text-[11px] text-gray-500 mb-4">Tasas y fletes calculados en el carrito</p>
+
+          <a href="/checkout.html">
+            <button className="w-full transform hover:-translate-y-1 bg-black text-white px-6 py-3 text-sm font-semibold shadow-lg rounded transition duration-200 hover:shadow-2xl active:scale-95 cursor-pointer">
+              Ir al checkout
+            </button>
+          </a>
+        </div>
       </div>
 
       <div className={`flex justify-between items-center lg:hidden`}>
@@ -35,7 +66,7 @@ function Header() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              class="w-8 h-8 text-white"
+              className="w-8 h-8 text-white"
             >
               <path
                 stroke-linecap="round"
@@ -64,38 +95,38 @@ function Header() {
         {/* Navigation Links - Center */}
         <div className="flex items-center justify-center flex-1 mx-8">
           <ul className="flex gap-8 items-center text-lg p-0 list-none">
-            <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" class="text-white no-underline">
+            <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
+              <Link to="/productos.html" className="text-white no-underline">
                 Hombres
               </Link>
             </li>
-            <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" class="text-white no-underline">
+            <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
+              <Link to="/productos.html" className="text-white no-underline">
                 Mujeres
               </Link>
             </li>
-            <li class="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" class="text-white no-underline">
+            <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
+              <Link to="/productos.html" className="text-white no-underline">
                 Niños
               </Link>
             </li>
           </ul>
         </div>
 
-        <div class="flex items-center justify-between w-full mt-4 mb-4 gap-3 lg:w-1/2 lg:justify-end lg:gap-8">
-          <div class="relative w-1/2 lg:w-[40%]">
+        <div className="flex items-center justify-between w-full mt-4 mb-4 gap-3 lg:w-1/2 lg:justify-end lg:gap-8">
+          <div className="relative w-1/2 lg:w-[40%]">
             <input
               type="search"
               placeholder="Buscar..."
-              class="text-base text-[#333333] border border-[#adadad] bg-[#f5f5f5] rounded pl-5 pr-3 ml-3 w-full h-8"
+              className="text-base text-[#333333] border border-[#adadad] bg-[#f5f5f5] rounded pl-5 pr-3 ml-3 w-full h-8"
             />
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
                 viewBox="0 0 24 24"
-                class="w-[1.1rem] h-[1.1rem] text-[#2f2f2f]"
+                className="w-[1.1rem] h-[1.1rem] text-[#2f2f2f]"
               >
                 <path
                   stroke-linecap="round"
@@ -105,8 +136,8 @@ function Header() {
               </svg>
             </div>
           </div>
-          <div class="flex gap-6 justify-end mr-3">
-            <button class="bg-transparent border-none hover:scale-105 transition">
+          <div className="flex gap-6 justify-end mr-3">
+            <button className="bg-transparent border-none hover:scale-105 transition">
               <img
                 width="32"
                 height="32"
@@ -115,7 +146,7 @@ function Header() {
               />
             </button>
 
-            <button class="bg-transparent border-none hover:scale-105 transition">
+            <button className="bg-transparent border-none hover:scale-105 transition">
               <Link to="/login-registro.html">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +154,7 @@ function Header() {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-6 h-6 text-[#f5f5f5]"
+                  className="w-6 h-6 text-[#f5f5f5]"
                 >
                   <path
                     stroke-linecap="round"
@@ -137,7 +168,7 @@ function Header() {
             <button
               onClick={() => setAbierto(!abierto)}
               id="botonCarrito"
-              class="bg-transparent border-none hover:scale-105 transition"
+              className="bg-transparent border-none hover:scale-105 transition"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +176,7 @@ function Header() {
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="w-6 h-6 text-[#f5f5f5]"
+                className="w-6 h-6 text-[#f5f5f5]"
               >
                 <path
                   stroke-linecap="round"
@@ -156,7 +187,7 @@ function Header() {
             </button>
           </div>
 
-          <div id="carritoPanel" class="carrito-panel"></div>
+          <div id="carritoPanel" className="carrito-panel"></div>
         </div>
       </div>
     </nav>
