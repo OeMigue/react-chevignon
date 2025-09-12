@@ -9,40 +9,8 @@ function Header() {
     <nav className="p-4 bg-gray-950 text-gray-950 fixed top-0 z-10 w-full">
       {/* Mobile View */}
 
-      <div  className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-lg flex flex-col 
-        ${abierto ? "" : "hidden"}`}>
-        <div className="flex justify-between items-center p-4 border-b">
-          <div className="flex items-center gap-2 font-medium text-base">
-            <span className="text-xl"
-            ><img
-                src="https://chevignon.vtexassets.com/assets/vtex.file-manager-graphql/images/4ed64a5a-7b89-40af-b31c-d85a1fa51334___7d5edaf384c76655da436c7883e31b32.svg"
-                className="w-12 h-12"/>
-            </span>Mi bolsa
-          </div>
-          <button
-            onClick={() => setAbierto(!abierto)}
-            className="text-xl cursor-pointer" id="cerrarCarrito">✖️</button>
-        </div>
-
-        <div id="cart-items" className="p-4 flex flex-col gap-4 flex-grow overflow-y-auto"></div>
-
-        <div className="border-t p-4 text-sm">
-          <div className="flex justify-between mb-2">
-            <span>Subtotal</span>
-            <span id="subtotalCarrito">$0</span>
-          </div>
-          <div className="flex justify-between font-bold text-base mb-1">
-            <span>Total</span>
-            <span id="totalCarrito">$0</span>
-          </div>
-          <p className="text-[11px] text-gray-500 mb-4">Tasas y fletes calculados en el carrito</p>
-
-          <a href="/checkout.html">
-            <button className="w-full transform hover:-translate-y-1 bg-black text-white px-6 py-3 text-sm font-semibold shadow-lg rounded transition duration-200 hover:shadow-2xl active:scale-95 cursor-pointer">
-              Ir al checkout
-            </button>
-          </a>
-        </div>
+      <div className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-lg flex flex-col ${abierto ? "" : "hidden"}`}>
+        <Carrito prop={setAbierto} />
       </div>
 
       <div className={`flex justify-between items-center lg:hidden`}>
@@ -95,18 +63,20 @@ function Header() {
         {/* Navigation Links - Center */}
         <div className="flex items-center justify-center flex-1 mx-8">
           <ul className="flex gap-8 items-center text-lg p-0 list-none">
+
             <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" className="text-white no-underline">
+              <Link to="productos" className="text-white no-underline">
                 Hombres
               </Link>
             </li>
             <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" className="text-white no-underline">
+              <Link to="productos" className="text-white no-underline">
                 Mujeres
               </Link>
             </li>
             <li className="group-hover:opacity-20 hover:opacity-100 hover:text-[#cecece] transition-opacity duration-300">
-              <Link to="/productos.html" className="text-white no-underline">
+              <Link to="productos" className="text-white no-underline">
+
                 Niños
               </Link>
             </li>
@@ -146,8 +116,10 @@ function Header() {
               />
             </button>
 
-            <button className="bg-transparent border-none hover:scale-105 transition">
-              <Link to="/login-registro.html">
+            <button class="bg-transparent border-none hover:scale-105 transition">
+
+              <Link to="login">
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -187,7 +159,7 @@ function Header() {
             </button>
           </div>
 
-          <div id="carritoPanel" className="carrito-panel"></div>
+
         </div>
       </div>
     </nav>
