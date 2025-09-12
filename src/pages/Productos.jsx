@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import CardProducto from '../components/CardProducto'
 
 export default function Productos() {
 
@@ -7,6 +8,8 @@ export default function Productos() {
   
 
   return (
-    <div>Productos</div>
+    <div>
+      <CardProducto />
+    </div>
   )
 }

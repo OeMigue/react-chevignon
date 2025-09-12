@@ -10,7 +10,7 @@ export let routerApp = [
         element: <Home />,
         children: [
             {
-                path: "productos",
+                path: "productos/",
                 element: <Productos />,
                 children: [
                     {
@@ -18,6 +18,7 @@ export let routerApp = [
                         element: <PaginaProducto />
                     }
                 ]
+                
             },
             {
                 path: "login",
