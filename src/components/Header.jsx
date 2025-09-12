@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { endpoints } from "../utils/api";
+import Carrito from "./Carrito";
+
 
 function Header() {
+  const [abierto, setAbierto] = useState(false);
   return (
-    <nav className="p-4 bg-gray-950 text-white hover:text-gray-950 fixed top-0 z-10 w-full">
+    <nav className="p-4 bg-gray-950 text-gray-950 fixed top-0 z-10 w-full">
       {/* Mobile View */}
-      <div className="flex justify-between items-center lg:hidden">
+
+      <div className={`fixed top-0 right-0 w-full max-w-md h-full bg-white z-50 shadow-lg flex flex-col ${abierto ? "" : "hidden"}`}>
+        <Carrito prop={setAbierto} />
+      </div>
+
+      <div className={`flex justify-between items-center lg:hidden`}>
         <div className="max-w-[140px] hover:scale-105 transition">
           <a href="/index.html">
             <img
@@ -126,6 +134,7 @@ function Header() {
             </button>
 
             <button
+              onClick={() => setAbierto(!abierto)}
               id="botonCarrito"
               class="bg-transparent border-none hover:scale-105 transition"
             >
@@ -148,9 +157,9 @@ function Header() {
 
           <div id="carritoPanel" class="carrito-panel"></div>
         </div>
-        </div>
-      </nav>
-    
+      </div>
+    </nav>
+
   );
 }
 
