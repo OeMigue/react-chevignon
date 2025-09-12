@@ -1,5 +1,6 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { endpoints } from '../utils/api'
+import { data } from 'react-router-dom'
 export function seccionPrincipal() {
   return (
     <div>Secciones</div>
@@ -7,6 +8,45 @@ export function seccionPrincipal() {
 }
 
 export function seccionCategorias(){
+
+ /*  const [getCategoria, setCategoria] = useState("")
+  const [getImagen, setImagen] = useState("")
+
+  function almacenarProducto() {
+    let producto = {
+      id: generarId(),
+      nombre: getNombre,
+      descripción: getDescripcion,
+      precio: getPrecio,
+      cantidad: getCantidad,
+    };
+    fetch(endpoints.productos, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(producto),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Producto creado:", data);
+        alertaConfirmacion(
+          "Producto creado con éxito",
+          "success",
+          redireccion,
+          "/home/productos"
+        );
+      });
+  }
+
+  function mostrarCategorias(){
+    fetch(endpoints.productos)
+    .then((response) => response.json)
+    .then((data) => {
+      
+    })
+  } */
+
     return(
         <section id="categories-section" class="py-10 px-4">
         <div class="w-full mx-auto">
